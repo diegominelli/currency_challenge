@@ -1,3 +1,7 @@
+<h1 align="center">
+    <img alt="MagicJvers" src="./src/assets/images/mjv.jpg" width="400px" />
+</h1>
+
 # Currency
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.
