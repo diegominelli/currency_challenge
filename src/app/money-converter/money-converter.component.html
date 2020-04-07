@@ -11,11 +11,22 @@
     <!-- TODO: hidden button or transform to clear -->
     <input type="submit" [disabled]="!formdata.valid" class="forsubmit" value="Send" hidden>
   </form>
-
+  
   <div> Moeda:
-    <select (change)="changemoneyOne($event)">
-      <option *ngFor="let i of moneys">{{ i }}</option>
-    </select>
+    
+    <ng-container *ngFor="let item of moneys">
+      <ng-container *ngIf="item === 'BRL'">
+        <select (change)="changemoneyOne($event)">
+          <option selected> {{ item }}</option>
+        </select>
+        <!-- <ng-template #outrasopcoes>
+          <select (change)="changemoneyTwo($event)">
+            <option> {{ item }}</option>
+          </select>
+        </ng-template>  -->
+        </ng-container>
+      </ng-container>
+       
   </div>
 
   <div> Moeda:
