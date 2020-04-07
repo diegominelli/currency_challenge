@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms'
 
 @Component({
   selector: 'app-money-converter',
@@ -10,7 +11,7 @@ export class MoneyConverterComponent implements OnInit {
   valDolar = 5.24;
   moneyOne:string;
   moneyTwo:string;
-  
+  formdata;
   
   constructor() { 
     this.moneyOne = "RS";
@@ -19,9 +20,18 @@ export class MoneyConverterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //input validation
+    this.formdata = new FormGroup({
+      // fullname: new FormControl("", this.fullnameValidation),
+      valOne: new FormControl("", Validators.compose([
+        Validators.required,
+      ])),
+      valTwo: new FormControl("", Validators.compose([
+        Validators.required,
+        // Validators.pattern("[^ @]*@[^ @]*")
+      ])),
+    });
   }
-
-  
 
   calcOne(event){
     let result = event.target.value;
@@ -33,6 +43,11 @@ export class MoneyConverterComponent implements OnInit {
     let result = event.target.value;
     this.numResult = Number(result);
     this.numResult /= this.valDolar; 
+  }
+
+  // TODO: submit button is disable
+  onClickSubmit(data){
+
   }
 
   moneyobject = {"rates":{"CAD":1.528,"HKD":8.3651,"ISK":155.5,"PHP":54.667,"DKK":7.466,"HUF":365.24,"CZK":27.603,

@@ -1,18 +1,30 @@
-<div class="calc">
-  {{moneyOne}} <input type="number" class="valOne" (keyup)="calcOne($event)">
-  {{moneyTwo}} <input type="number" class="valTwo" (keyup)="calcTwo($event)">
-  <p>{{numResult}}</p>
+<div class="conversor">
+  <!-- <h2>Money Converter</h2> -->
+  <br>
+  <!-- Angular forms -->
+  <form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+    <!-- <h4>Moeda</h4> -->
+    {{moneyOne}} <input type="number" name="valOne" id="valOne" (keyup)="calcOne($event)"
+      formControlName="fullname">
+    <!-- <h4>*Moeda</h4> -->
+    {{moneyTwo}} <input type="number" name="valTwo" id="valTwo" value="{{numResult}}" (keyup)="calcTwo($event)" formControlName="email">
+    <!-- TODO: hidden button or transform to clear -->
+    <input type="submit" [disabled]="!formdata.valid" class="forsubmit" value="Send" hidden>
+  </form>
+
+  <div> Moeda:
+    <select (change)="changemoneyOne($event)">
+      <option *ngFor="let i of moneys">{{ i }}</option>
+    </select>
+  </div>
+
+  <div> Moeda:
+    <select (change)="changemoneyTwo($event)">
+      <option *ngFor="let j of moneys">{{ j }}</option>
+    </select>
+  </div>
+  <br />
 </div>
 
-<div> Moeda:
-  <select (change) = "changemoneyOne($event)">
-    <option *ngFor = "let i of moneys">{{ i }}</option>
-  </select>
-</div>
 
-<div> Moeda:
-  <select (change)="changemoneyTwo($event)">
-    <option *ngFor="let j of moneys">{{ j }}</option>
-  </select>
-</div>
-<br/>
+
