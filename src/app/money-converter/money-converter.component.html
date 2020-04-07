@@ -3,3 +3,10 @@
   US$ <input type="number" class="valTwo" (keyup)="calcTwo($event)">
   <p>{{numResult}}</p>
 </div>
+
+<div> Moeda:
+  <select (change) = "changemoney($event)">
+    <option *ngFor = "let i of moneys">{{ i }}</option>
+  </select>
+</div>
+<br/>
