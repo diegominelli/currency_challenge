@@ -4,12 +4,27 @@
 
 .conversor {
   text-align: center;
+  background-color: #42A948;
+  font-size: 35px;;
+}
+
+.conversor input {
+  font-size: 25px;
+  width: 200px;
+}
+
+.selectormoney {
+  display: flex;
+  margin-left: 500px;
+}
+
+.money {
+  
 }
 
 .fa-exchange-alt {
   color: greenyellow;
 }
-
 
 .ng-valid[required],
 .ng-valid.required {
