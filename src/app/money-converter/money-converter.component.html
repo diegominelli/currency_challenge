@@ -1,12 +1,18 @@
 <div class="calc">
-  R$ <input type="number" class="valOne" (keyup)="calcOne($event)">
-  US$ <input type="number" class="valTwo" (keyup)="calcTwo($event)">
+  {{moneyOne}} <input type="number" class="valOne" (keyup)="calcOne($event)">
+  {{moneyTwo}} <input type="number" class="valTwo" (keyup)="calcTwo($event)">
   <p>{{numResult}}</p>
 </div>
 
 <div> Moeda:
-  <select (change) = "changemoney($event)">
+  <select (change) = "changemoneyOne($event)">
     <option *ngFor = "let i of moneys">{{ i }}</option>
+  </select>
+</div>
+
+<div> Moeda:
+  <select (change)="changemoneyTwo($event)">
+    <option *ngFor="let j of moneys">{{ j }}</option>
   </select>
 </div>
 <br/>

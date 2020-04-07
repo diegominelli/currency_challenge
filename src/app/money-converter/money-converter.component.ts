@@ -8,8 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class MoneyConverterComponent implements OnInit {
   numResult:number;
   valDolar = 5.24;
+  moneyOne:string;
+  moneyTwo:string;
   
-  constructor() { }
+  
+  constructor() { 
+    this.moneyOne = "RS";
+    this.moneyTwo = "USD";
+
+  }
 
   ngOnInit(): void {
   }
@@ -36,12 +43,18 @@ export class MoneyConverterComponent implements OnInit {
 
   moneys = ["USD","HKD","ISK"];
 
-  changemoney(event) {
+  changemoneyOne(event) {
     // var select = document.querySelector('select');
     // var option = select.children[select.selectedIndex];
     // var text = option.textContent;
-     alert(`Changed month from the Dropdown: ${event.target.value}`);
-     console.log(event);
+    this.moneyOne = event.target.value
+  }
+
+  changemoneyTwo(event) {
+    // var select = document.querySelector('select');
+    // var option = select.children[select.selectedIndex];
+    // var text = option.textContent;
+    this.moneyTwo = event.target.value
   }
 
 }
