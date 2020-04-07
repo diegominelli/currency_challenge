@@ -41,8 +41,10 @@ export class MoneyConverterComponent implements OnInit {
   "TRY":7.3136,"CNY":7.6519,"NOK":11.3875,"NZD":1.82,"ZAR":20.3534,"USD":1.0791,"MXN":27.0896,
   "ILS":3.9144,"GBP":0.878,"KRW":1326.04,"MYR":4.7097},"base":"EUR","date":"2020-04-06"}
 
-  moneys = ["USD","HKD","ISK"];
+   //moneys = ["USD","HKD","ISK"];
 
+  moneys = Object.keys(this.moneyobject.rates);
+  
   changemoneyOne(event) {
     // var select = document.querySelector('select');
     // var option = select.children[select.selectedIndex];
