@@ -4,7 +4,7 @@
   <!-- Angular forms -->
   <form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
     <!-- <h4>Moeda</h4> -->
-    {{moneyOne}} <input type="number" name="valOne" id="valOne" (keyup)="calcOne($event)"
+    {{moneyOne}} <input type="number" name="valOne" id="valOne" value="{{numResultTwo}}" (keyup)="calcOne($event)"
       formControlName="fullname">
     <!-- <h4>*Moeda</h4> -->
     {{moneyTwo}} <input type="number" name="valTwo" id="valTwo" value="{{numResult}}" (keyup)="calcTwo($event)" formControlName="email">

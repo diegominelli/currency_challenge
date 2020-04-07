@@ -8,6 +8,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms'
 })
 export class MoneyConverterComponent implements OnInit {
   numResult:number;
+  numResultTwo:number;
   valDolar = 5.24;
   moneyOne:string;
   moneyTwo:string;
@@ -16,6 +17,8 @@ export class MoneyConverterComponent implements OnInit {
   constructor() { 
     this.moneyOne = "RS";
     this.moneyTwo = "USD";
+    this.numResult = 0;
+    this.numResultTwo = 0;
 
   }
 
@@ -41,8 +44,8 @@ export class MoneyConverterComponent implements OnInit {
 
   calcTwo(event){
     let result = event.target.value;
-    this.numResult = Number(result);
-    this.numResult /= this.valDolar; 
+    this.numResultTwo = Number(result);
+    this.numResultTwo /= this.valDolar; 
   }
 
   // TODO: submit button is disable
