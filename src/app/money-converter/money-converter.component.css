@@ -1,3 +1,16 @@
+/* i.fas {
+  border: 1px solid red;
+}  */
+
+.conversor {
+  text-align: center;
+}
+
+.fa-exchange-alt {
+  color: greenyellow;
+}
+
+
 .ng-valid[required],
 .ng-valid.required {
   border-left: 5px solid #42A948;
@@ -8,3 +21,4 @@
   border-left: 5px solid #a94442;
   /* red */
 }
+

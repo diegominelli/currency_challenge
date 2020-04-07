@@ -2,10 +2,11 @@
 
   <br>
   {{moneyOne}} <input type="number" name="valOne" id="valOne" value="{{numResultTwo}}" (keyup)="calcOne($event)">
+  <i class="fas fa-exchange-alt"></i>
   {{moneyTwo}} <input type="number" name="valTwo" id="valTwo" value="{{numResult}}" (keyup)="calcTwo($event)">
   
   <div> Moeda:
-    <select (change)="changemoneyTwo($event)">
+    <select (change)="changemoneyOne($event)">
       <option *ngFor="let i of moneys">{{ i }}</option>
     </select>
   </div>
@@ -17,7 +18,7 @@
   </div>
   
   <br>
-  
+
 </div>
 
 
