@@ -11,6 +11,7 @@ export class MoneyConverterComponent implements OnInit {
   numResult:number;
   numResultTwo:number; // talvez não necessario
   valDolar = 5.24; // melhorar
+  convertionRate:number;
   moneyOne:string;
   moneyTwo:string; // talvez não necessario
   formdata; // TODO: retirar
@@ -38,7 +39,6 @@ export class MoneyConverterComponent implements OnInit {
       console.log(`moneydata (array keys dos dados da api.rates): ${this.rates}`)
       }
     );
-    // this.algo = this.apiservice.algo();
 
     //input validation
     this.formdata = new FormGroup({
@@ -52,6 +52,8 @@ export class MoneyConverterComponent implements OnInit {
       ])),
     });
   }
+  
+
 
   calcOne(event){
     let result = event.target.value;
@@ -70,6 +72,22 @@ export class MoneyConverterComponent implements OnInit {
 
   }
 
+  
+  
+  changemoneyOne(event) {
+    // alterar o valor de convertionRate
+    this.moneyOne = event.target.value
+  }
+
+  changemoneyTwo(event) {
+    // alterar o valor de convertionRate
+    this.moneyTwo = event.target.value
+  }
+}
+
+
+// objeto retornado pela api:
+
   // moneyobject = {"rates":{"CAD":1.528,"HKD":8.3651,"ISK":155.5,"PHP":54.667,"DKK":7.466,"HUF":365.24,"CZK":27.603,
   // "AUD":1.779,"RON":4.8335,"SEK":10.9788,"IDR":17710.73,"INR":82.106,"BRL":5.7056,"RUB":82.481,
   // "HRK":7.6255,"JPY":117.54,"THB":35.459,"CHF":1.056,"SGD":1.548,"PLN":4.5643,"BGN":1.9558,
@@ -77,20 +95,3 @@ export class MoneyConverterComponent implements OnInit {
   // "ILS":3.9144,"GBP":0.878,"KRW":1326.04,"MYR":4.7097},"base":"EUR","date":"2020-04-06"}
 
   // moneys = Object.keys(this.moneyobject.rates);
-  
-  changemoneyOne(event) {
-    // var select = document.querySelector('select');
-    // var option = select.children[select.selectedIndex];
-    // var text = option.textContent;
-    this.moneyOne = event.target.value
-  }
-
-  changemoneyTwo(event) {
-    // var select = document.querySelector('select');
-    // var option = select.children[select.selectedIndex];
-    // var text = option.textContent;
-    this.moneyTwo = event.target.value
-  }
-
-}
-
