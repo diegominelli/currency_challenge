@@ -72,8 +72,6 @@ export class MoneyConverterComponent implements OnInit {
 
   }
 
-  
-  
   changemoneyOne(event) {
     // alterar o valor de convertionRate
     this.moneyOne = event.target.value
