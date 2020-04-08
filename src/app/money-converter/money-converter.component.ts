@@ -10,7 +10,7 @@ import { ApiService } from './../api.service';
 export class MoneyConverterComponent implements OnInit {
   numResult:number;
   numResultTwo:number; // talvez não necessario
-  valDolar = 5.24; // melhorar
+  currentRate = 5.24; // melhorar
   convertionRate:number;
   moneyOne:string;
   moneyTwo:string; // talvez não necessario
@@ -58,13 +58,13 @@ export class MoneyConverterComponent implements OnInit {
   calcOne(event){
     let result = event.target.value;
     this.numResult = Number(result);
-    this.numResult *= this.valDolar;
+    this.numResult *= this.currentRate;
   }
 
   calcTwo(event){
     let result = event.target.value;
     this.numResultTwo = Number(result);
-    this.numResultTwo /= this.valDolar; 
+    this.numResultTwo /= this.currentRate; 
   }
 
   // TODO: submit button is disable
@@ -75,6 +75,9 @@ export class MoneyConverterComponent implements OnInit {
   changemoneyOne(event) {
     // alterar o valor de convertionRate
     this.moneyOne = event.target.value
+    // TODO: consertar
+    let index = this.moneys.indexOf('BRL');
+    let currentRate = this.rates[index];
   }
 
   changemoneyTwo(event) {
