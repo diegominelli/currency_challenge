@@ -8,6 +8,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { MoneyConverterComponent } from './money-converter/money-converter.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { ApiService } from './api.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,9 +20,10 @@ import { MoneyConverterComponent } from './money-converter/money-converter.compo
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

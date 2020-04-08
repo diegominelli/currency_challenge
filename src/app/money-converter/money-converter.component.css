@@ -5,7 +5,8 @@
 .conversor {
   text-align: center;
   background-color: #42A948;
-  font-size: 35px;;
+  font-size: 35px;
+  width: 100%;
 }
 
 .conversor input {
