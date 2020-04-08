@@ -77,7 +77,7 @@ export class MoneyConverterComponent implements OnInit {
     this.moneyOne = event.target.value
     // TODO: consertar
     let index = this.moneys.indexOf('BRL');
-    let currentRate = this.rates[index];
+    this.currentRate = this.rates[index];
   }
 
   changemoneyTwo(event) {
