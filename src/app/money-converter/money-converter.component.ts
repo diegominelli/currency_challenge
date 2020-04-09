@@ -15,10 +15,9 @@ export class MoneyConverterComponent implements OnInit {
   moneyOne:string;
   moneyTwo:string; // talvez não necessario
   formdata; // TODO: retirar
-  
-  
+
   constructor(private apiservice: ApiService) { 
-    this.moneyOne = "RS";
+    this.moneyOne = "BRL";
     this.moneyTwo = "USD";
     this.numResult = 0;
     this.numResultTwo = 0;
@@ -29,16 +28,7 @@ export class MoneyConverterComponent implements OnInit {
   moneys:any;
   rates:any;
   ngOnInit(): void {
-    let moneydata;
-    this.apiservice.getData().subscribe(
-      (data) => {
-        moneydata = new Object(data);
-        this.entries = Object.entries(moneydata.rates); // Object.entries(moneydata.rates);
-        this.moneys = Object.keys(moneydata.rates);
-        this.rates = Object.values(moneydata.rates); 
-      console.log(`moneydata (array keys dos dados da api.rates): ${this.rates}`)
-      }
-    );
+    this.callApi();
 
     //input validation
     this.formdata = new FormGroup({
@@ -53,6 +43,18 @@ export class MoneyConverterComponent implements OnInit {
     });
   }
   
+  callApi() {
+    let moneydata;
+    this.apiservice.getData(this.moneyOne).subscribe(
+      (data) => {
+        moneydata = new Object(data);
+        this.entries = Object.entries(moneydata.rates); // Object.entries(moneydata.rates);
+        this.moneys = Object.keys(moneydata.rates);
+        this.rates = Object.values(moneydata.rates);
+        console.log(`moneydata (array keys dos dados da api.rates): ${this.rates}`)
+      }
+    );
+  }
 
 
   calcOne(event){
@@ -74,15 +76,17 @@ export class MoneyConverterComponent implements OnInit {
 
   changemoneyOne(event) {
     // alterar o valor de convertionRate
-    this.moneyOne = event.target.value
-    // TODO: consertar
-    let index = this.moneys.indexOf('BRL');
-    this.currentRate = this.rates[index];
-  }
+    this.moneyOne = event.target.value;
+    this.callApi();
 
+  }
+  
   changemoneyTwo(event) {
     // alterar o valor de convertionRate
     this.moneyTwo = event.target.value
+    // TODO: consertar
+    // let index = this.moneys.indexOf('BRL');
+    // this.currentRate = this.rates[index];
   }
 }
 
