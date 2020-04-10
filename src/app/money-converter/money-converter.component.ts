@@ -77,18 +77,23 @@ export class MoneyConverterComponent implements OnInit {
   changemoneyOne(event) {
     // alterar o valor de convertionRate
     this.moneyOne = event.target.value;
-    this.callApi();
-
+    this.callApi()
+    this.changeCurrentRate(this.moneyTwo);
   }
   
   changemoneyTwo(event) {
     // alterar o valor de convertionRate
     this.moneyTwo = event.target.value
-    // TODO: consertar
-    // let index = this.moneys.indexOf('BRL');
-    // this.currentRate = this.rates[index];
+    this.changeCurrentRate(this.moneyTwo)
   }
+
+  changeCurrentRate(selectedOptionTwo) {
+    let index = this.moneys.indexOf(selectedOptionTwo);
+    this.currentRate = this.rates[index];
+  }
+
 }
+
 
 
 // objeto retornado pela api:
