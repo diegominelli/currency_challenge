@@ -30,17 +30,17 @@ export class MoneyConverterComponent implements OnInit {
   ngOnInit(): void {
     this.callApi();
 
-    //input validation
-    this.formdata = new FormGroup({
-      // fullname: new FormControl("", this.fullnameValidation),
-      valOne: new FormControl("", Validators.compose([
-        Validators.required,
-      ])),
-      valTwo: new FormControl("", Validators.compose([
-        Validators.required,
-        // Validators.pattern("[^ @]*@[^ @]*")
-      ])),
-    });
+    // //input validation
+    // this.formdata = new FormGroup({
+    //   // fullname: new FormControl("", this.fullnameValidation),
+    //   valOne: new FormControl("", Validators.compose([
+    //     Validators.required,
+    //   ])),
+    //   valTwo: new FormControl("", Validators.compose([
+    //     Validators.required,
+    //     // Validators.pattern("[^ @]*@[^ @]*")
+    //   ])),
+    // });
   }
   
   callApi() {
@@ -48,7 +48,7 @@ export class MoneyConverterComponent implements OnInit {
     this.apiservice.getData(this.moneyOne).subscribe(
       (data) => {
         moneydata = new Object(data);
-        this.entries = Object.entries(moneydata.rates); // Object.entries(moneydata.rates);
+        this.entries = Object.entries(moneydata.rates); 
         this.moneys = Object.keys(moneydata.rates);
         this.rates = Object.values(moneydata.rates);
         console.log(`moneydata (array keys dos dados da api.rates): ${this.rates}`)
