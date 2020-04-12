@@ -10,13 +10,8 @@ import{CurrencyBase} from '../money-model/currency-base'
   styleUrls: ['./money-converter.component.css']
 })
 export class MoneyConverterComponent implements OnInit {
-<<<<<<< HEAD:src/app/money-converter/money-converter.component.ts
-  modelMoneyBase = new CurrencyBase("BRL");
-  modelMoneyTwo = new Currency("USD", 20);
-=======
   modelMoneyBase:any;
   modelMoneyTwo:any;
->>>>>>> 637428a0a6052f0b0f5ce606f7cfb4f3b9cd067f:src/app/conversor/money-component/money-converter.component.ts
   numResult:number;
   numResultTwo:number; // talvez não necessario
   moneyOne:string;
