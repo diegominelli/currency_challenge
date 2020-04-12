@@ -6,10 +6,10 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { MoneyConverterComponent } from './money-converter/money-converter.component';
+import { MoneyConverterComponent } from './conversor/money-component/money-converter.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { ApiService } from './api.service';
+import { ApiService } from './conversor/money-service/api.service';
 
 @NgModule({
   declarations: [
