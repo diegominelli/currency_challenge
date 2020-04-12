@@ -11,42 +11,29 @@ import{CurrencyBase} from '../currency-base'
 })
 export class MoneyConverterComponent implements OnInit {
   modelMoneyBase = new CurrencyBase("BRL");
-  modelMoneyTwo =  new Currency("USD",20 );
+  modelMoneyTwo = new Currency("USD", 20);
   numResult:number;
   numResultTwo:number; // talvez não necessario
-  currentRate = 5.24; // melhorar
-  convertionRate:number;
   moneyOne:string;
   moneyTwo:string; // talvez não necessario
   formdata; // TODO: retirar
-
+  
   constructor(private apiservice: ApiService) { 
     this.moneyOne = "BRL";
     this.moneyTwo = "USD";
     this.numResult = 0;
     this.numResultTwo = 0;
-      //
+    
   }
-
+  
   entries:any;
   moneys:any;
   rates:any;
   ngOnInit(): void {
     this.callApi();
-
-    // //input validation
-    // this.formdata = new FormGroup({
-    //   // fullname: new FormControl("", this.fullnameValidation),
-    //   valOne: new FormControl("", Validators.compose([
-    //     Validators.required,
-    //   ])),
-    //   valTwo: new FormControl("", Validators.compose([
-    //     Validators.required,
-    //     // Validators.pattern("[^ @]*@[^ @]*")
-    //   ])),
-    // });
+    
   }
-  
+        
   callApi() {
     let moneydata;
     this.apiservice.getData(this.moneyOne).subscribe(
@@ -57,20 +44,19 @@ export class MoneyConverterComponent implements OnInit {
         this.rates = Object.values(moneydata.rates);
         console.log(`moneydata (array keys dos dados da api.rates): ${this.rates}`)
       }
-    );
-  }
-
-
+      );
+    }
+          
   calcOne(event){
     let result = event.target.value;
     this.numResult = Number(result);
-    this.numResult *= this.currentRate;
+    this.numResult *= this.modelMoneyTwo.rate;
   }
 
   calcTwo(event){
     let result = event.target.value;
     this.numResultTwo = Number(result);
-    this.numResultTwo /= this.currentRate; 
+    this.numResultTwo /= this.modelMoneyTwo.rate; 
   }
 
   // TODO: submit button is disable
@@ -80,20 +66,22 @@ export class MoneyConverterComponent implements OnInit {
 
   changemoneyOne(event) {
     // alterar o valor de convertionRate
-    this.moneyOne = event.target.value;
+    // this.modelMoneyBase.money_name = event.target.value 
+
     this.callApi()
-    this.changeCurrentRate(this.moneyTwo);
+    this.changeCurrentRate();
   }
   
   changemoneyTwo(event) {
     // alterar o valor de convertionRate
-    this.moneyTwo = event.target.value
-    this.changeCurrentRate(this.moneyTwo)
+    // this.modelMoneyTwo.money_name = event.target.value;
+
+    this.changeCurrentRate()
   }
 
-  changeCurrentRate(selectedOptionTwo) {
-    let index = this.moneys.indexOf(selectedOptionTwo);
-    this.currentRate = this.rates[index];
+  changeCurrentRate() {
+    let index = this.moneys.indexOf(this.modelMoneyTwo.money_name);
+    this.modelMoneyTwo.rate = this.rates[index];
   }
 
 }

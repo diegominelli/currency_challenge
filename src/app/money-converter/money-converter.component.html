@@ -8,7 +8,7 @@
   <div class="selectormoney">
     <div class="money"> Moeda:
       <!-- <select (change)="changemoneyOne($event)"> -->
-        <select name="money" [(ngModel)]="modelMoneyBase.money_name" >
+        <select name="money" [(ngModel)]="modelMoneyBase.money_name" (change)="changemoneyOne($event)">
         <option *ngFor="let i of moneys" [value]="i">{{ i }}</option>
       </select>
     </div>
