@@ -1,25 +1,29 @@
 <div class="conversor">
-
-  <br>
-  {{moneyOne}} <input type="number" name="valOne" id="valOne" value="{{numResultTwo}}" (keyup)="calcOne($event)">
+  <form #moneyForm="ngForm" class="money_form">
+<br>
+  {{modelMoneyBase.money_name}} <input type="number" name="valOne" id="valOne" value="{{numResultTwo}}" (keyup)="calcOne($event)">
   <i class="fas fa-exchange-alt"></i>
-  {{moneyTwo}} <input type="number" name="valTwo" id="valTwo" value="{{numResult}}" (keyup)="calcTwo($event)">
+  {{modelMoneyTwo.money_name}} <input type="number" name="valTwo" id="valTwo" value="{{numResult}}" (keyup)="calcTwo($event)">
   
   <div class="selectormoney">
     <div class="money"> Moeda:
-      <select (change)="changemoneyOne($event)">
-        <option *ngFor="let i of moneys">{{ i }}</option>
+      <!-- <select (change)="changemoneyOne($event)"> -->
+        <select name="money" [(ngModel)]="modelMoneyBase.money_name" >
+        <option *ngFor="let i of moneys" [value]="i">{{ i }}</option>
       </select>
     </div>
     
     <div class="money1"> Moeda:
-      <select (change)="changemoneyTwo($event)">
-        <option *ngFor="let j of moneys">{{ j }}</option>
+      <!-- <select (change)="changemoneyTwo($event)"> -->
+        <select name="money1" [(ngModel)]="modelMoneyTwo.money_name" >
+        <option *ngFor="let j of moneys" [value]="j">{{ j }}</option>
       </select>
     </div>
 </div>
   
   <br>
+  </form>
+  
 
 </div>
 
