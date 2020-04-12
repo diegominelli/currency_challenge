@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
-import { ApiService } from './../api.service';
-import{Currency} from '../currency';
-import{CurrencyBase} from '../currency-base'
+import { ApiService } from '../money-service/api.service';
+import{Currency} from '../money-model/currency';
+import{CurrencyBase} from '../money-model/currency-base'
 
 @Component({
   selector: 'app-money-converter',
@@ -10,8 +10,8 @@ import{CurrencyBase} from '../currency-base'
   styleUrls: ['./money-converter.component.css']
 })
 export class MoneyConverterComponent implements OnInit {
-  modelMoneyBase = new CurrencyBase("BRL");
-  modelMoneyTwo =  new Currency("USD",20 );
+  modelMoneyBase:any;
+  modelMoneyTwo:any;
   numResult:number;
   numResultTwo:number; // talvez não necessario
   currentRate = 5.24; // melhorar
@@ -21,6 +21,8 @@ export class MoneyConverterComponent implements OnInit {
   formdata; // TODO: retirar
 
   constructor(private apiservice: ApiService) { 
+    this.modelMoneyBase = new CurrencyBase("BRL");
+    this.modelMoneyTwo =  new Currency("USD",20 );
     this.moneyOne = "BRL";
     this.moneyTwo = "USD";
     this.numResult = 0;
