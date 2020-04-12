@@ -21,7 +21,7 @@ export class MoneyConverterComponent implements OnInit {
     this.moneyTwo = "USD";
     this.numResult = 0;
     this.numResultTwo = 0;
-
+      //
   }
 
   entries:any;
