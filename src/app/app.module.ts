@@ -10,11 +10,13 @@ import { MoneyConverterComponent } from './conversor/money-component/money-conve
 
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './conversor/money-service/api.service';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MoneyConverterComponent
+    MoneyConverterComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
