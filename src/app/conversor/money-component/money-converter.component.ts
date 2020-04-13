@@ -15,7 +15,6 @@ export class MoneyConverterComponent implements OnInit {
   modelMoneyBase:any;
   modelMoneyTwo:any;
 
-  
   constructor(private apiservice: ApiService) { 
     this.calculator =  new Calculator(0 , 0);
     this.modelMoneyTwo = new Currency("BRL", 20); 
@@ -28,7 +27,7 @@ export class MoneyConverterComponent implements OnInit {
   ngOnInit(): void {
     this.callApi();
     this.changeCurrentRate();
-    
+    this.setEuroAndDolarToRealRateByApi();
   }
   
   callApi() {
@@ -41,14 +40,26 @@ export class MoneyConverterComponent implements OnInit {
         this.rates = Object.values(moneydata.rates);
       }
     );
+  }
 
+  dolarRateToReal: any;
+  euroRateToReal: any;
+  setEuroAndDolarToRealRateByApi() {
+    let moneydata;
+    this.apiservice.getData(this.modelMoneyBase.money_name).subscribe(
+      (data) => {
+        moneydata = new Object(data);
+        let dolarIndex = Object.keys(moneydata.rates).indexOf('USD');
+        let euroIndex = Object.keys(moneydata.rates).indexOf('EUR');
+        this.dolarRateToReal = Object.values(moneydata.rates)[dolarIndex];
+        this.euroRateToReal = Object.values(moneydata.rates)[euroIndex];
+      }
+    );
   }
           
   calcOne(event){
     this.changeCurrentRate();
     this.calculator.inputValueTwo = this.calculator.inputValueOne * this.modelMoneyTwo.rate; 
-    // console.log(`valor de input2: ${this.calculator.inputValueTwo}`);
-    // console.log(`valor de modelMoneyTwo.rate: ${this.modelMoneyTwo.rate}`);
   }
 
   calcTwo(event){
