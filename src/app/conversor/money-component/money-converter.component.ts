@@ -18,8 +18,8 @@ export class MoneyConverterComponent implements OnInit {
   
   constructor(private apiservice: ApiService) { 
     this.calculator =  new Calculator(0 , 0);
-    this.modelMoneyTwo = new Currency("USD", 20); 
-    this.modelMoneyBase = new CurrencyBase("BRL");
+    this.modelMoneyTwo = new Currency("BRL", 20); 
+    this.modelMoneyBase = new CurrencyBase("USD");
   }
   
   entries:any;
@@ -46,7 +46,7 @@ export class MoneyConverterComponent implements OnInit {
           
   calcOne(event){
     this.changeCurrentRate();
-    this.calculator.inputValueTwo = this.calculator.inputValueOne / this.modelMoneyTwo.rate; 
+    this.calculator.inputValueTwo = this.calculator.inputValueOne * this.modelMoneyTwo.rate; 
     // console.log(`valor de input2: ${this.calculator.inputValueTwo}`);
     // console.log(`valor de modelMoneyTwo.rate: ${this.modelMoneyTwo.rate}`);
   }
