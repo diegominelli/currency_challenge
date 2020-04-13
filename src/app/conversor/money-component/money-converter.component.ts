@@ -18,8 +18,8 @@ export class MoneyConverterComponent implements OnInit {
   
   constructor(private apiservice: ApiService) { 
     this.calculator =  new Calculator(0 , 0);
+    this.modelMoneyTwo = new Currency("USD", 20); 
     this.modelMoneyBase = new CurrencyBase("BRL");
-    this.modelMoneyTwo =  new Currency("USD",20 );
   }
   
   entries:any;
@@ -27,10 +27,10 @@ export class MoneyConverterComponent implements OnInit {
   rates:any;
   ngOnInit(): void {
     this.callApi();
-    
+    this.changeCurrentRate();
     
   }
-        
+  
   callApi() {
     let moneydata;
     this.apiservice.getData(this.modelMoneyBase.money_name).subscribe(
@@ -41,11 +41,11 @@ export class MoneyConverterComponent implements OnInit {
         this.rates = Object.values(moneydata.rates);
       }
     );
-    
-    
+
   }
           
   calcOne(event){
+    this.changeCurrentRate();
     this.calculator.inputValueTwo = this.calculator.inputValueOne / this.modelMoneyTwo.rate; 
     // console.log(`valor de input2: ${this.calculator.inputValueTwo}`);
     // console.log(`valor de modelMoneyTwo.rate: ${this.modelMoneyTwo.rate}`);
@@ -57,15 +57,8 @@ export class MoneyConverterComponent implements OnInit {
     // this.numResultTwo /= this.modelMoneyTwo.rate; 
   }
 
-  // TODO: submit button is disable
-  onClickSubmit(data){
-
-  }
-
-  // concertar abaixo:
-
   changemoneyOne(event) {
-    // alterar o valor de convertionRate
+    // linha abaixo redundante:
     // this.modelMoneyBase.money_name = event.target.value 
 
     this.callApi()
@@ -73,7 +66,7 @@ export class MoneyConverterComponent implements OnInit {
   }
   
   changemoneyTwo(event) {
-    // alterar o valor de convertionRate
+    // linha abaixo redundante:
     // this.modelMoneyTwo.money_name = event.target.value;
 
     this.changeCurrentRate()
