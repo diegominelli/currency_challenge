@@ -1,0 +1,29 @@
+.container {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+.text-wrapper {
+  width: 75%;
+  height: 50%;
+  padding: 0px 15px 15px 30px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+h3 {
+  margin-top: 35px;
+  font-size: 24px;
+  line-height: 28px;
+  color: #111111;
+}
+
+.text {
+  text-align: left;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+.text p {
+  margin-top: 20px;
+}
