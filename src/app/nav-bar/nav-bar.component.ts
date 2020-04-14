@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
   touched = false;
-  navLinks: any;
+  // navLinks: any;
   constructor() { }
 
   ngOnInit(): void {
