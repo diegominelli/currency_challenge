@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, RoutingComponent } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -13,12 +13,22 @@ import { ApiService } from './conversor/money-service/api.service';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { MoneyChartComponent } from './money-chart/money-chart.component';
 
+import { AboutComponent } from './about/about.component';
+import { HistoricalComponent } from './historical/historical.component';
+import { DolarComponent } from './dolar/dolar.component';
+import { EuroComponent } from './euro/euro.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     MoneyConverterComponent,
     NavBarComponent,
-    MoneyChartComponent
+    MoneyChartComponent,
+    AboutComponent,
+    HistoricalComponent,
+    DolarComponent,
+    EuroComponent,
+    RoutingComponent
   ],
   imports: [
     BrowserModule,

@@ -1,24 +1,25 @@
 <nav>
   <div class="logo">
-    <a href="#">
+    <!-- <a href="/"> -->
+    <a routerLink="/">
       <h4>Money Conversor</h4>
     </a>
   </div>
     <ul class="nav-links" [class.nav-active]="touched === true">
       <!-- TODO: colocar rotas reais -->
       <li>
-        <a href="#">Sobre</a>
+        <a routerLink="/about">Sobre</a>
       </li>
       <li>
-        <a href="#">Histórico</a>
-      </li>
-      <li>
-        <!-- colocar valor dinâmico (em relacao ao real) -->
-        <a href="#">Dólar</a>
+        <a routerLink="/historical">Histórico</a>
       </li>
       <li>
         <!-- colocar valor dinâmico (em relacao ao real) -->
-        <a href="#">Euro</a>
+        <a routerLink="/dolar-to-real">Dólar</a>
+      </li>
+      <li>
+        <!-- colocar valor dinâmico (em relacao ao real) -->
+        <a routerLink="/euro-to-real">Euro</a>
       </li>
     </ul>
 
@@ -30,3 +31,6 @@
       <div class="line3"></div>
     </div>
 </nav>
+<router-outlet></router-outlet>
+
+  
