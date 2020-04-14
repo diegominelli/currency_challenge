@@ -10,10 +10,10 @@ import { Color, Label } from 'ng2-charts';
 export class MoneyChartComponent implements OnInit {
 
   lineChartData: ChartDataSets[] = [
-    { data: [85, 72, 78, 75, 77, 75], label: 'Crude oil prices' },
+    { data: [4.2, 4.3, 5.1, 5.3, 5.2, 5.6, 5.9, 6.1, 6.4, 6.1, 5.9, 6,15], label: 'Dolar prices' },
   ];
 
-  lineChartLabels: Label[] = ['January', 'February', 'March', 'April', 'May', 'June'];
+  lineChartLabels: Label[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
   lineChartOptions = {
     responsive: true,
@@ -21,8 +21,8 @@ export class MoneyChartComponent implements OnInit {
 
   lineChartColors: Color[] = [
     {
-      borderColor: 'black',
-      backgroundColor: 'rgba(255,255,0,0.28)',
+      borderColor: 'green',
+      backgroundColor: 'rgba(41,44,48,0.60)',
     },
   ];
 
