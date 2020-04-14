@@ -4,7 +4,7 @@
       <h4>Money Conversor</h4>
     </a>
   </div>
-    <ul class="nav-links">
+    <ul class="nav-links" [class.nav-active]="touched === true">
       <!-- TODO: colocar rotas reais -->
       <li>
         <a href="#">Sobre</a>
@@ -21,7 +21,10 @@
         <a href="#">Euro</a>
       </li>
     </ul>
-    <div class="burger" (click)="toggleBurgerDisplay($event)">
+
+    <!-- The Angular class binding makes it easy to add and remove a CSS class conditionally.  -->
+    <!-- Just add [class.some-css-class]="some-condition" to the element you want to style. -->
+    <div class="burger" (click)="toggleBurgerDisplay()" [class.toggle]="touched === true">
       <div class="line1"></div>
       <div class="line2"></div>
       <div class="line3"></div>

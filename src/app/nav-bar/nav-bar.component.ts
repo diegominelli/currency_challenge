@@ -6,33 +6,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-  
+  touched = false;
+  navLinks: any;
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  //   let burger = document.querySelector('.burger');
-  //   let nav = document.querySelector('.nav-links');
-  // let navLinks = document.querySelectorAll('.nav-links li');
-  
-  toggleBurgerDisplay(event) {
-  //   // Toggle nav
-  //   event.classList.toggle("nav-active");   
+  toggleBurgerDisplay() {
+    // Toggle nav
+    this.touched = !this.touched;
     
-  //   // Animate links
-  //   navLinks.forEach((link, index) => {
-  //     if (link.style.animation) {
-  //       link.style.animation = '';
-  //     } else {
-  //       link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-  //     }
-  //   });
-      // Burger Animation
-      // burger.classList.toggle('toggle');
+    // if keyframes were working:
+    // this.navLinks = document.querySelectorAll('.nav-links li');
+    // // Animate links
+    // this.navLinks.forEach((link, index) => {
+    //   // console.log(`indice do link: ${index}`);
+    //   if (link.style.animation) {
+    //     link.style.animation = '';
+    //   } else {
+    //     link.style.animation = `navLinkFade 0.5s ease forwards ${index/7 + 1.5}s`;
+    //   }
+    // });
 
   }
-
-  
 
 }
