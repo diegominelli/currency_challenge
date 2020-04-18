@@ -16,8 +16,8 @@ export class MoneyConverterComponent implements OnInit {
   modelMoneyTwo:any;
 
   constructor(private apiservice: ApiService) { 
-    this.calculator =  new Calculator(0 , 0);
-    this.modelMoneyTwo = new Currency("BRL", 20); 
+    this.calculator =  new Calculator(null , 0);
+    this.modelMoneyTwo = new Currency("BRL", null); 
     this.modelMoneyBase = new CurrencyBase("USD");
   }
   
@@ -38,10 +38,24 @@ export class MoneyConverterComponent implements OnInit {
         this.entries = Object.entries(moneydata.rates); 
         this.moneys = Object.keys(moneydata.rates);
         this.rates = Object.values(moneydata.rates);
+        if(this.calculator.inputValueOne == null || this.calculator.inputValueTwo === "" ){
+          this.calculator.inputValueOne = 1;
+          let dolarIndex = Object.keys(moneydata.rates).indexOf('BRL');
+          this.modelMoneyTwo.rate = this.rates[dolarIndex];
+          this.calculator.inputValueTwo = this.calculator.inputValueOne*this.modelMoneyTwo.rate;
+          this.calculator.inputValueTwo = this.calculator.inputValueTwo.toFixed(2);
+        }else{
+          // TODO: verificar se esta setando valores redundamente fora do subscribe
+          let index = this.moneys.indexOf(this.modelMoneyTwo.money_name);
+          this.modelMoneyTwo.rate = this.rates[index];
+          this.calculator.inputValueTwo = this.calculator.inputValueOne * this.modelMoneyTwo.rate;
+          this.calculator.inputValueTwo = this.calculator.inputValueTwo.toFixed(2);
+        }
       }
     );
   }
-
+ 
+  // TODO: retirar função setEuroAnd
   dolarRateToReal: any;
   euroRateToReal: any;
   setEuroAndDolarToRealRateByApi() {
@@ -56,10 +70,12 @@ export class MoneyConverterComponent implements OnInit {
       }
     );
   }
-          
+      
+  // TODO: event not been used - remove
   calcOne(event){
     this.changeCurrentRate();
     this.calculator.inputValueTwo = this.calculator.inputValueOne * this.modelMoneyTwo.rate; 
+    this.calculator.inputValueTwo = this.calculator.inputValueTwo.toFixed(2)
   }
 
   calcTwo(event){
@@ -71,16 +87,15 @@ export class MoneyConverterComponent implements OnInit {
   changemoneyOne(event) {
     // linha abaixo redundante:
     // this.modelMoneyBase.money_name = event.target.value 
-
-    this.callApi()
+    this.callApi();
     this.changeCurrentRate();
   }
   
   changemoneyTwo(event) {
-    // linha abaixo redundante:
-    // this.modelMoneyTwo.money_name = event.target.value;
-
+    // TODO: working but calling api too many times - not necessary
+    this.callApi();
     this.changeCurrentRate()
+
   }
 
   changeCurrentRate() {
