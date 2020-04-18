@@ -40,8 +40,8 @@ export class MoneyConverterComponent implements OnInit {
         this.rates = Object.values(moneydata.rates);
         if(this.calculator.inputValueOne == null || this.calculator.inputValueTwo === "" ){
           this.calculator.inputValueOne = 1;
-          let dolarIndex = Object.keys(moneydata.rates).indexOf('BRL');
-          this.modelMoneyTwo.rate = this.rates[dolarIndex];
+          let realIndex = Object.keys(moneydata.rates).indexOf('BRL');
+          this.modelMoneyTwo.rate = this.rates[realIndex];
           this.calculator.inputValueTwo = this.calculator.inputValueOne*this.modelMoneyTwo.rate;
           this.calculator.inputValueTwo = this.calculator.inputValueTwo.toFixed(2);
         }else{
