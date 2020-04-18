@@ -79,6 +79,9 @@ export class MoneyConverterComponent implements OnInit {
   }
 
   calcTwo(event){
+    this.changeCurrentRate();
+    this.calculator.inputValueOne = this.calculator.inputValueTwo / this.modelMoneyTwo.rate;
+    this.calculator.inputValueOne = this.calculator.inputValueOne.toFixed(2)
     // let result = event.target.value;
     // this.numResultTwo = Number(result);
     // this.numResultTwo /= this.modelMoneyTwo.rate; 
