@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { BroadcastRatesService } from '../broadcast-rates.service'
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
@@ -8,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 export class NavBarComponent implements OnInit {
   touched = false;
   // navLinks: any;
-  constructor() { }
+  constructor(private _broadcastlistener: BroadcastRatesService) { }
+  dolarRate: number;
+  euroRate: number;
 
   ngOnInit(): void {
+    this._broadcastlistener.broadcastDolarRate.subscribe(
+      rateUSD => {
+        this.dolarRate = rateUSD;
+        console.log(`valor de dolarRate:${this.dolarRate}`);
+      }
+    );
+    this._broadcastlistener.broadcastEuroRate.subscribe(
+      rateEUR => {
+        this.euroRate = rateEUR;
+        console.log(`valor de euroRate:${this.euroRate}`);
+      }
+    );
+    
   }
 
   toggleBurgerDisplay() {

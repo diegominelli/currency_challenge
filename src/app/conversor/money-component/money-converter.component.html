@@ -1,41 +1,37 @@
 <div class="conversor">
   <form #moneyForm="ngForm" class="money_form">
-<br>
+    <br>
 
-  <!-- Defining a name attribute is a requirement when using [(ngModel)] in combination with a form. -->
-  {{modelMoneyBase.money_name}} <input type="number" class="form-control" id="valOne" required
-    [(ngModel)]="calculator.inputValueOne" name="valOne" #name="ngModel" (keyup)="calcOne($event)" #spy>
-  <!-- <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
-    Name is required
-  </div> -->
-  <!-- <br>TODO: remove this: {{spy.className}} -->
-
-  <i class="fas fa-exchange-alt"></i>
-
-  {{modelMoneyTwo.money_name}} <input type="number" class="form-control" id="valTwo" required
-    [(ngModel)]="calculator.inputValueTwo" name="valTwo" #name="ngModel" (keyup)="calcTwo($event)" #spy>
-  <!-- <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+    <div class="calc-elemOne"> 
+      <div class="selectormoney">
+        <select name="moneyOne" [(ngModel)]="modelMoneyBase.money_name" (change)="changemoneyOne($event)">
+          <option *ngFor="let i of moneys" [value]="i">{{ i }}</option>
+        </select>
+      </div>
+      <!-- Defining a name attribute is a requirement when using [(ngModel)] in combination with a form. -->
+      <input type="number" class="form-control" id="valOne" required
+      [(ngModel)]="calculator.inputValueOne" name="valOne" #name="ngModel" (keyup)="calcOne($event)" #spy>
+      <!-- <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
         Name is required
       </div> -->
-  <!-- <br>TODO: remove this: {{spy.className}} -->
-  
-  <div class="selectormoney">
-    <div class="money"> Moeda:
-      <!-- <select (change)="changemoneyOne($event)"> -->
-        <select name="money" [(ngModel)]="modelMoneyBase.money_name" (change)="changemoneyOne($event)">
-        <option *ngFor="let i of moneys" [value]="i">{{ i }}</option>
-      </select>
+      <!-- <br>TODO: remove this: {{spy.className}} -->
     </div>
-    
-    <div class="money1"> Moeda:
-      <!-- <select (change)="changemoneyTwo($event)"> -->
-        <select name="money1" [(ngModel)]="modelMoneyTwo.money_name" (change)="changemoneyTwo($event)">
-        <option *ngFor="let j of moneys" [value]="j">{{ j }}</option>
-      </select>
+
+    <div class="calc-elemTwo">
+      <i class="fas fa-exchange-alt"></i>
     </div>
-</div>
-  
-  <br>
+
+    <div class="calc-elemThree">
+      <div class="selectormoney">
+        <select name="moneyTwo" [(ngModel)]="modelMoneyTwo.money_name" (change)="changemoneyTwo($event)">
+          <option *ngFor="let j of moneys" [value]="j">{{ j }}</option>
+        </select>
+      </div>
+      <input type="number" class="form-control" id="valTwo" required
+      [(ngModel)]="calculator.inputValueTwo" name="valTwo" #name="ngModel" (keyup)="calcTwo($event)">
+    </div>
+        
+    <br>
   </form>
   
 <!-- <p>TODO: retirar: {{dolarRateToReal}}</p> -->
@@ -43,38 +39,4 @@
 </div>
 
 
-<!-- 
-<div class="conversor">
-  <br>
-  <form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
-    {{moneyOne}} <input type="number" name="valOne" id="valOne" value="{{numResultTwo}}" (keyup)="calcOne($event)"
-      formControlName="fullname">
-    {{moneyTwo}} <input type="number" name="valTwo" id="valTwo" value="{{numResult}}" (keyup)="calcTwo($event)"
-      formControlName="email">
-    <input type="submit" [disabled]="!formdata.valid" class="forsubmit" value="Send" hidden>
-  </form>
 
-  <div> Moeda:
-
-    <ng-container *ngFor="let item of moneys">
-      <ng-container *ngIf="item === 'BRL'">
-        <select (change)="changemoneyOne($event)">
-          <option selected> {{ item }}</option>
-        </select>
-        <ng-template #outrasopcoes>
-          <select (change)="changemoneyTwo($event)">
-            <option> {{ item }}</option>
-          </select>
-        </ng-template> 
-      </ng-container>
-    </ng-container>
-
-  </div>
-
-  <div> Moeda:
-    <select (change)="changemoneyTwo($event)">
-      <option *ngFor="let j of moneys">{{ j }}</option>
-    </select>
-  </div>
-  <br />
-</div> -->

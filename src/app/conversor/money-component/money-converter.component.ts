@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms'
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ApiService } from '../money-service/api.service';
 import{Currency} from '../money-model/currency';
-import{CurrencyBase} from '../money-model/currency-base'
-import { Calculator } from '../money-model/calculator'
+import{CurrencyBase} from '../money-model/currency-base';
+import { Calculator } from '../money-model/calculator';
+import { BroadcastRatesService } from '../../broadcast-rates.service';
 
 @Component({
   selector: 'app-money-converter',
@@ -14,8 +15,9 @@ export class MoneyConverterComponent implements OnInit {
   calculator:any;
   modelMoneyBase:any;
   modelMoneyTwo:any;
-
-  constructor(private apiservice: ApiService) { 
+  dolarRateToReal: any;
+  euroRateToReal: any;
+  constructor(private apiservice: ApiService, private _broadcast: BroadcastRatesService) { 
     this.calculator =  new Calculator(null , 0);
     this.modelMoneyTwo = new Currency("BRL", null); 
     this.modelMoneyBase = new CurrencyBase("USD");
@@ -26,7 +28,6 @@ export class MoneyConverterComponent implements OnInit {
   rates:any;
   ngOnInit(): void {
     this.callApi();
-    this.changeCurrentRate();
     this.setEuroAndDolarToRealRateByApi();
   }
   
@@ -42,34 +43,37 @@ export class MoneyConverterComponent implements OnInit {
           this.calculator.inputValueOne = 1;
           let realIndex = Object.keys(moneydata.rates).indexOf('BRL');
           this.modelMoneyTwo.rate = this.rates[realIndex];
-          this.calculator.inputValueTwo = this.calculator.inputValueOne*this.modelMoneyTwo.rate;
-          this.calculator.inputValueTwo = this.calculator.inputValueTwo.toFixed(2);
         }else{
           // TODO: verificar se esta setando valores redundamente fora do subscribe
           let index = this.moneys.indexOf(this.modelMoneyTwo.money_name);
           this.modelMoneyTwo.rate = this.rates[index];
-          this.calculator.inputValueTwo = this.calculator.inputValueOne * this.modelMoneyTwo.rate;
-          this.calculator.inputValueTwo = this.calculator.inputValueTwo.toFixed(2);
         }
+        this.calculator.inputValueTwo = this.calculator.inputValueOne*this.modelMoneyTwo.rate;
+        this.calculator.inputValueTwo = this.calculator.inputValueTwo.toFixed(2);
       }
     );
   }
  
-  // TODO: retirar função setEuroAnd
-  dolarRateToReal: any;
-  euroRateToReal: any;
+  
   setEuroAndDolarToRealRateByApi() {
     let moneydata;
-    this.apiservice.getData(this.modelMoneyBase.money_name).subscribe(
+    this.apiservice.getData("BRL").subscribe(
       (data) => {
         moneydata = new Object(data);
+        console.log(moneydata);
         let dolarIndex = Object.keys(moneydata.rates).indexOf('USD');
         let euroIndex = Object.keys(moneydata.rates).indexOf('EUR');
         this.dolarRateToReal = Object.values(moneydata.rates)[dolarIndex];
+        this.dolarRateToReal = 1/this.dolarRateToReal;
+        this.dolarRateToReal = this.dolarRateToReal.toFixed(2);
         this.euroRateToReal = Object.values(moneydata.rates)[euroIndex];
+        this.euroRateToReal = 1/this.euroRateToReal;
+        this.euroRateToReal = this.euroRateToReal.toFixed(2);
+        this._broadcast.broadcastRates(this.dolarRateToReal, this.euroRateToReal);
       }
     );
   }
+
       
   // TODO: event not been used - remove
   calcOne(event){
@@ -102,7 +106,7 @@ export class MoneyConverterComponent implements OnInit {
   }
 
   changeCurrentRate() {
-    let index = this.moneys.indexOf(this.modelMoneyTwo.money_name);
+    let index = this.moneys.indexOf(this.modelMoneyTwo.money_name); // ERROR
     this.modelMoneyTwo.rate = this.rates[index];
   }
 
