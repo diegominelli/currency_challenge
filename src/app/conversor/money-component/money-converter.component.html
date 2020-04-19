@@ -2,37 +2,39 @@
   <form #moneyForm="ngForm" class="money_form">
     <br>
 
-    <div class="calc-elemOne"> 
-      <div class="selectormoney">
-        <select name="moneyOne" [(ngModel)]="modelMoneyBase.money_name" (change)="changemoneyOne($event)">
-          <option *ngFor="let i of moneys" [value]="i">{{ i }}</option>
-        </select>
+    <div class="calc">
+      <div class="calc-elemOne"> 
+        <div class="selectormoneyOne">
+          <select name="moneyOne" [(ngModel)]="modelMoneyBase.money_name" (change)="changemoneyOne($event)">
+            <option *ngFor="let i of moneys" [value]="i">{{ i }}</option>
+          </select>
+        </div>
+        <!-- Defining a name attribute is a requirement when using [(ngModel)] in combination with a form. -->
+        <input type="number" class="form-control" id="valOne" required
+        [(ngModel)]="calculator.inputValueOne" name="valOne" #name="ngModel" (keyup)="calcOne($event)" #spy>
+        <!-- <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+          Name is required
+        </div> -->
+        <!-- <br>TODO: remove this: {{spy.className}} -->
       </div>
-      <!-- Defining a name attribute is a requirement when using [(ngModel)] in combination with a form. -->
-      <input type="number" class="form-control" id="valOne" required
-      [(ngModel)]="calculator.inputValueOne" name="valOne" #name="ngModel" (keyup)="calcOne($event)" #spy>
-      <!-- <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
-        Name is required
-      </div> -->
-      <!-- <br>TODO: remove this: {{spy.className}} -->
-    </div>
-
-    <div class="calc-elemTwo">
-      <i class="fas fa-exchange-alt"></i>
-    </div>
-
-    <div class="calc-elemThree">
-      <div class="selectormoney">
-        <select name="moneyTwo" [(ngModel)]="modelMoneyTwo.money_name" (change)="changemoneyTwo($event)">
-          <option *ngFor="let j of moneys" [value]="j">{{ j }}</option>
-        </select>
+      
+      <div class="calc-elemTwo">
+        <i class="fas fa-exchange-alt"></i>
       </div>
-      <input type="number" class="form-control" id="valTwo" required
-      [(ngModel)]="calculator.inputValueTwo" name="valTwo" #name="ngModel" (keyup)="calcTwo($event)">
+      
+      <div class="calc-elemThree">
+        <div class="selectormoneyTwo">
+          <select name="moneyTwo" [(ngModel)]="modelMoneyTwo.money_name" (change)="changemoneyTwo($event)">
+            <option *ngFor="let j of moneys" [value]="j">{{ j }}</option>
+          </select>
+        </div>
+        <input type="number" class="form-control" id="valTwo" required
+        [(ngModel)]="calculator.inputValueTwo" name="valTwo" #name="ngModel" (keyup)="calcTwo($event)">
+      </div>
     </div>
-        
-    <br>
-  </form>
+      
+      <br>
+    </form>
   
 <!-- <p>TODO: retirar: {{dolarRateToReal}}</p> -->
 <!-- <p>TODO: retirar: {{euroRateToReal}}</p> -->

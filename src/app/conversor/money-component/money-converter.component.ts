@@ -17,6 +17,7 @@ export class MoneyConverterComponent implements OnInit {
   modelMoneyTwo:any;
   dolarRateToReal: any;
   euroRateToReal: any;
+  
   constructor(private apiservice: ApiService, private _broadcast: BroadcastRatesService) { 
     this.calculator =  new Calculator(null , 0);
     this.modelMoneyTwo = new Currency("BRL", null); 

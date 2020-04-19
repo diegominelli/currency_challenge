@@ -1,50 +1,111 @@
-/* i.fas {
-  border: 1px solid red;
-}  */
-
-.conversor {
-  text-align: center;
-  /* background-color: #42A948; */
-  font-size: 35px;
-  width: 100%;
-  color: white;
-}
-
-.conversor input {
-  font-size: 25px;
-  width: 200px;
+.calc {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .calc-elemOne{
   display: flex;
+  align-items: center;
+  /* border:3px solid #ddd; */
+  border-radius: 10px;
+  max-width: 359px;
+  max-height: 55px;
+
 }
 
-.selectormoney {
-  /* width: 200px; */
-  position: relative;
-  font-family: Arial;
+.selectormoneyOne:before {
+  content: '\f0dd';
+  font-family: 'Font Awesome 5 Free';
+  position: absolute;
+  top: 0;
+  right: 86.93%;
+  width: 5%;
+  height: 91%;
+  text-align: center;
+  line-height: 50px;
+  color: #fff;
+  font-size: 28px;
+  background-color: #b7c4cf;
+  pointer-events: none;
+  margin-top: 2.5px;
 }
 
-select option {
-  color: red;
-  padding: 3px;
-  font-weight: bold;
+.selectormoneyTwo:before {
+  content: '\f0dd';
+  font-family: 'Font Awesome 5 Free';
+  position: absolute;
+  top: 0;
+  right: 33.33%;
+  width: 5%;
+  height: 91%;
+  text-align: center;
+  line-height: 50px;
+  color: #fff;
+  font-size: 28px;
+  background-color: #b7c4cf;
+  pointer-events: none;
+  margin-top: 2.5px;
 }
 
-.selectormoney select{
+.selectormoneyOne:hover:before,
+.selectormoneyTwo:hover:before {
+  background: #9099a0;
+}
+
+.selectormoneyOne select,
+.selectormoneyTwo select {
+  background-color: #a9b7b9;
+  color: #fff;
+  padding: 10px;
+  width: 100px;
+  height: 50px;
+  border: none;
+  font-size: 20px;
+  align-items: center;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+  -webkit-appearance: button;
+  border-radius: 10px 0px 0px 10px;
+  outline: none;
+  text-align: center;
+}
+
+input {
+  height: 50px;
+  font-size: 20px;
+  border-radius: 0 10px 10px 0;
+  border: none;
+  align-items: center;
+}
+
+.calc-elemTwo{
+  font-size: 35px;
+}
+
+.calc-elemThree {
+  display: flex;
+  align-items: center;
+}
+
+i.fas {
+  /* border: 1px solid red; */
+  padding: 10px;
+} 
+
+/* .selectormoney select{ */
    /*-webkit-appearance: none;*/  /* Remove estilo padrão do Chrome */
    /*-moz-appearance: none;*/ /* Remove estilo padrão do FireFox */
    /* appearance: none; */ /*Remove estilo padrão do FireFox */
    /* background: url(http://www.webcis.com.br/images/imagens-noticias/select/ico-seta-appearance.gif) no-repeat #eeeeee;  Imagem de fundo (Seta) */
    /*background-position: 218px center;*/  /*Posição da imagem do background*/
    /*width: 250px;*/ /* Tamanho do select, maior que o tamanho da div "div-select" */
-   height:100px; /* Altura do select, importante para que tenha a mesma altura em todo os navegadores */
+   /*height:100px;*/ /* Altura do select, importante para que tenha a mesma altura em todo os navegadores */
    /* border:1px solid #ddd; */
-}
-
-.selectormoney select {
-  font-size: 100px;
-}
+/* } */
 
 .fa-exchange-alt {
   color: greenyellow;
