@@ -7,10 +7,10 @@
 </h4>
 
 <p align="center">
-<img alt="Last commit on GitHub" src="https://img.shields.io/github/last-commit/diegominelli/currency_challenge?color=FF5E84">
-<img alt="Project top programing language" src="https://img.shields.io/github/languages/top/diegominelli/currency_challenge?color=FF5E84">
-<img alt="GitHub stars" src="https://img.shields.io/github/stars/diegominelli/currency_challenge?color=FF5E84">
-<img alt="GitHub license" src="https://img.shields.io/github/license/diegominelli/currency_challenge?color=FF5E84">
+<img alt="Last commit on GitHub" src="https://img.shields.io/github/last-commit/diegominelli/currency_challenge">
+<img alt="Project top programing language" src="https://img.shields.io/github/languages/top/diegominelli/currency_challenge">
+<img alt="GitHub stars" src="https://img.shields.io/github/stars/diegominelli/currency_challenge">
+<img alt="GitHub license" src="https://img.shields.io/github/license/diegominelli/currency_challenge">
 </p> 
 
 
