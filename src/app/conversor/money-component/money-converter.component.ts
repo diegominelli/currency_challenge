@@ -74,7 +74,6 @@ export class MoneyConverterComponent implements OnInit {
       }
     );
   }
-
       
   // TODO: event not been used - remove
   calcOne(event){
